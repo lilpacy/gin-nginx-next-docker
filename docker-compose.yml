@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  go:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.local
+    container_name: Gin
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/go/src # for hot reload by air
+    networks:
+      go_nginx_net:
+        ipv4_address: 172.21.0.3
+#    tty: true # changing to true break stdout, so just for debug use
+
+  nginx:
+    build: ./nginx
+    container_name: Nginx
+    ports:
+      - "80:80"
+    networks:
+      go_nginx_net:
+        ipv4_address: 172.21.0.5
+    depends_on:
+      - "go"
+
+networks:
+  go_nginx_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/24 # set to not used subnet
