@@ -13,4 +13,4 @@ RUN go mod tidy
 
 EXPOSE 8000
 
-CMD ["air", "-c", ".air.toml"]
+CMD ["go", "run", "main.go"]

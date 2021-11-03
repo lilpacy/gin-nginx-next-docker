@@ -3,10 +3,10 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.local
     container_name: Gin
     ports:
       - "8000:8000"
+    command: bash -c "air -c .air.toml"
     volumes:
       - ./backend:/go/src # for hot reload by air
     networks:
