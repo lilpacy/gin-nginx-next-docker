@@ -1,4 +1,4 @@
-module github.com/lilpacy/hololive-en-clip/backend
+module github.com/lilpacy/gin-nginx-next-docker-min
 
 go 1.17
 
