@@ -2,3 +2,4 @@
 .envrc
 tmp
 .next
+node_modules
