@@ -34,7 +34,7 @@ services:
       - /app/node_modules # workaround for next smc binary build error
     ports:
       - "3000:3000"
-#    command: bash -c "yarn install && yarn dev"
+    command: bash -c "yarn install && yarn dev" # for hot reload in development
     networks:
       go_nginx_next_net:
         ipv4_address: 172.22.0.7
